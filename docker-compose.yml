@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+    app:
+        build:
+            context: ./app
+            dockerfile: ../app.Dockerfile
+        container_name: tavola-app
+        network_mode: "host"
+        volumes: 
+            - ./app:/usr/src/app
