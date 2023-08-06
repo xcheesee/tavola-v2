@@ -5,7 +5,7 @@ export default function ShopLayout({ children }: { children: React.ReactNode}) {
     return(
         <div className="h-full">
             <Header />
-            { children }
+                { children }
         </div>
     )
 }
