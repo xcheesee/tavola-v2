@@ -1,0 +1,28 @@
+import React from "react";
+import  SidebarItem from '@/components/sidebarItem'
+
+export default function AdminLayout({children}: {children: React.ReactNode}) {
+    return (
+        <div className="grid grid-cols-[200px_1fr] grid-rows-[min-content_1fr] h-full">
+            <div className="col-span-2 bg-neutral-500 px-4 py-2 justify-between items-center flex">
+                <h1 className="text-3xl font-bold">Tavola Redonda</h1>
+                <div className="flex gap-8">
+                    <div className="">Notificacoes</div>
+                    <div className="">Login/out</div>
+                </div>
+            </div>
+
+            <div className="bg-neutral-500 max-lg:hidden p-4 flex flex-col gap-8">
+                <SidebarItem icon="carbon:dashboard" href="/dashboard">Dashboard</SidebarItem>
+                <SidebarItem icon="carbon:box" href="/dashboard">Estoque</SidebarItem>
+                <SidebarItem icon="carbon:service-desk" href="/orders">Pedidos</SidebarItem>
+                <SidebarItem icon="carbon:chart-area" href="/dashboard">Relatorios</SidebarItem>
+                <SidebarItem icon="carbon:id-management" href="/users">Usuarios</SidebarItem>
+            </div>
+            <div className="">
+                {children}
+            </div>
+
+        </div>
+    )
+}

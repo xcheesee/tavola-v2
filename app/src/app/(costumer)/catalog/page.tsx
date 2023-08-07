@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation"
 export default function Catalog() {
     const categories = [1, 2, 3, 4]
     return(
-        <div className="pt-16 grid grid-rows-[min-content_1fr] h-full">
-            <div className="flex justify-around bg-neutral-400 [&>*]:text-white">
+        <div className="grid grid-rows-[min-content_1fr] h-full">
+            <div className="flex justify-around bg-neutral-400 [&>*]:text-white py-2">
                 {categories.map( 
                     category => (
                         <Link href={`/catalog?category_id=${category}`}>

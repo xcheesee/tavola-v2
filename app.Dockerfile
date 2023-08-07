@@ -5,5 +5,3 @@ WORKDIR /usr/src/app
 COPY . .
 
 CMD npm install && npm run dev
-
-ENTRYPOINT [ "tail", "-f", "/dev/null" ]

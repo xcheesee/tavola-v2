@@ -23,6 +23,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@iconify-icon/react": "^1.0.8",
     "daisyui": "^3.5.1"
   }
 }
