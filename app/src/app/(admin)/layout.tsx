@@ -14,9 +14,9 @@ export default function AdminLayout({children}: {children: React.ReactNode}) {
 
             <div className="bg-neutral-500 max-lg:hidden p-4 flex flex-col gap-8">
                 <SidebarItem icon="carbon:dashboard" href="/dashboard">Dashboard</SidebarItem>
-                <SidebarItem icon="carbon:box" href="/dashboard">Estoque</SidebarItem>
+                <SidebarItem icon="carbon:box" href="/stock">Estoque</SidebarItem>
                 <SidebarItem icon="carbon:service-desk" href="/orders">Pedidos</SidebarItem>
-                <SidebarItem icon="carbon:chart-area" href="/dashboard">Relatorios</SidebarItem>
+                <SidebarItem icon="carbon:chart-area" href="/metrics">Relatorios</SidebarItem>
                 <SidebarItem icon="carbon:id-management" href="/users">Usuarios</SidebarItem>
             </div>
             <div className="">

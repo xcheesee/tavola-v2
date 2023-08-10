@@ -14,7 +14,7 @@ export default function Header() {
                     </Link>
                 </div>
             </div>
-            <div className="border border-red-500 rounded-full absolute top-1/6 w-24 h-24 max-xl:hidden">image</div>
+            <div className="border bg-neutral-900 rounded-full absolute top-1/6 w-24 h-24 max-xl:hidden"></div>
             <div className="flex flex-1 justify-around">
                 <div className="flex flex-1 justify-around">
                     <Link href={'/'}>
