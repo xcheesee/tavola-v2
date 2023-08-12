@@ -1,8 +1,9 @@
 import Link from "next/link"
+import { Icon } from '@iconify-icon/react'
 
 export default function Header() {
     return(
-        <nav className="flex justify-around w-full relative py-2">
+        <nav className="flex justify-around w-full py-2 z-10 backdrop-opacity-0">
             <div className="flex flex-1 justify-around">
                 <div className="px-4 self-center h-[64px] h-[64px]">
                     <img src="/tower-of-babel.png" alt="" className="w-full h-full"/>
@@ -29,8 +30,12 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="flex gap-4 px-4">
-                    <button className="btn">U</button>
-                    <button className="btn">C</button>
+                    <button className="btn bg-yellow-950">
+                        <Icon icon="mdi:user" width={24}/>
+                    </button>
+                    <button className="btn bg-yellow-950">
+                        <Icon icon="mdi:cart" width={24}/>
+                    </button>
                 </div>
             </div>
         </nav>
