@@ -12,10 +12,10 @@ export default function Home() {
   return (
     <div className="h-full">
             <div className="w-full h-full grid">
-                <div className="hero h-screen bg-neutral-300 relative">
-                    <div className='absolute  w-full h-3/5 -top-20'>
-                        <div className='absolute bg-black w-full h-full opacity-70'></div>
-                        <img src="https://wallpapercave.com/wp/wp2361253.jpg" alt="" className='w-full h-full object-fill'/>
+                <div className="hero h-screen bg-neutral-300 relative -mb-20">
+                    <div className='absolute  w-full h-full -top-20'>
+                        <div className='absolute bg-black w-full h-full opacity-50'></div>
+                        <img src="/bg1.png" alt="" className='w-full h-full object-cover'/>
                     </div>
                     <div className="hero-content relative rounded-xl flex-col lg:flex-row-reverse">
                         <div className='absolute h-full w-full'>
@@ -31,7 +31,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="hero h-full bg-neutral-300">
+                <div className="hero relative w-full h-full">
+                    <div className='absolute  w-full h-full'>
+                        <div className='absolute bg-black w-full h-full opacity-70'></div>
+                        <img src="/bg2.jpg" alt="" className='w-full h-full object-fill'/>
+                    </div>
                     <div className="hero-content rounded-xl relative flex-col lg:flex-row-reverse">
                         <div className='absolute h-full w-full'>
                             <img src="/papiro3.png" alt="" className='w-full h-full object-fill' />
@@ -46,7 +50,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="hero h-full bg-neutral-800 py-8">
+                <div className="hero relative h-full bg-neutral-800">
+                    <div className='absolute  w-full h-full'>
+                        <div className='absolute bg-black w-full h-full opacity-70'></div>
+                        <img src="/bg3.png" alt="" className='w-full h-full object-fill'/>
+                    </div>
                     <div className="hero-content relative bg-base-900 rounded-xl flex-col lg:flex-row-reverse">
                         <div className='absolute h-full w-full'>
                             <img src="/papiro3.png" alt="" className='w-full h-full object-fill' />
@@ -63,7 +71,7 @@ export default function Home() {
                 </div>
                 <footer className="footer footer-center p-4 bg-neutral-900 text-base-content">
                   <div>
-                    <p>Copyright © 2023 - All right reserved by ReiDoSexo Industries Ltd</p>
+                    <p>Copyright © 2023 - All right reserved by Sexo Industries Ltd</p>
                   </div>
                 </footer>
             </div>
