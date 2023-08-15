@@ -3,20 +3,20 @@ import { Icon } from '@iconify-icon/react'
 
 export default function Header() {
     return(
-        <nav className="flex justify-around relative w-full  z-10 ">
+        <nav className="flex bg-neutral-800 justify-around relative w-full  z-10 ">
             <div className="absolute w-full h-full backdrop-blur-3xl header-mask"></div>
             <div className="flex flex-1 relative pt-4">
 
-            <div className="flex flex-1 justify-around z-20">
+            <div className="flex flex-1 justify-around z-20 [&>*]:text-neutral-100">
                 <div className="px-4 self-center h-[64px] h-[64px]">
                     <img src="/tower-of-babel.png" alt="" className="w-full h-full"/>
                 </div>
                 <div className="flex flex-1 justify-around">
                     <Link href={'/catalog'}>
-                        <div className="btn bg-yellow-950">Cardapio</div>
+                        <div className="btn bg-yellow-950 text-white">Cardapio</div>
                     </Link>
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950">Endereco</div>
+                        <div className="btn bg-yellow-950 text-white">Endereco</div>
                     </Link>
                 </div>
             </div>
@@ -26,17 +26,17 @@ export default function Header() {
             <div className="flex flex-1 justify-around z-20">
                 <div className="flex flex-1 justify-around">
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950">Contato</div>
+                        <div className="btn bg-yellow-950 text-white">Contato</div>
                     </Link>
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950">Sobre nos</div>
+                        <div className="btn bg-yellow-950 text-white">Sobre nos</div>
                     </Link>
                 </div>
                 <div className="flex gap-4 px-4">
-                    <button className="btn bg-yellow-950">
+                    <button className="btn bg-yellow-950 text-white">
                         <Icon icon="mdi:user" width={24}/>
                     </button>
-                    <button className="btn bg-yellow-950">
+                    <button className="btn bg-yellow-950 text-white">
                         <Icon icon="mdi:cart" width={24}/>
                     </button>
                 </div>
