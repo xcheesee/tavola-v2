@@ -1,5 +1,6 @@
 'use client'
 
+import DeleteModal from '@/components/deleteModal'
 import FiltroDropdown from '@/components/filtroDropdown'
 import { getAllProdutos } from '@/utils/api'
 import { Icon } from '@iconify-icon/react'
@@ -15,6 +16,8 @@ export default function Produtos() {
         queryKey: ['produtos'],
         queryFn: getAllProdutos,
     })
+
+    const [delModalData, setDelModalData] = useState<{id?: string}>({})
 
     const [isCollapsed, setIsCollapsed] = useState(false)
     return (
@@ -59,12 +62,22 @@ export default function Produtos() {
                             }}>
                                 <Icon icon="mdi:pencil" width={24} className='text-neutral-600'/>
                             </button>
+                            <button
+                              onClick={() => {
+                                setDelModalData({
+                                  id: produto.id
+                                })
+                                
+                              }}  
+                            ></button>
                         </td>
                     </tr>)
                     )}
                   </tbody>
                 </table>
             </div> 
+
+            <DeleteModal data={delModalData} id="del-modal" />
         </>
     )
 }
