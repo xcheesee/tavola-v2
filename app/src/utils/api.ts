@@ -13,7 +13,7 @@ export async function postProduto({formData}: {formData: FormData}) {
     return {res: json, ok: true}
 }
 
-export async function putProduto({formData, id}: {formData: FormData, id: string}) {
+export async function putProduto({formData, id}: {formData: FormData, id: number}) {
     const url = `http://localhost:5034/produto/${id}`
     const options = {
         "method": "PUT",
@@ -40,15 +40,16 @@ export async function getAllProdutos() {
 
 export async function getProduto({id}: {id: string}) {
     const url = `http://localhost:5034/produto/${id}`
-    const options = {
-        "method": "GET"
-    }
-    await new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("pog")
-        }, 2000)
-    })
-    const res = await fetch(url, options)
+    const res = await fetch(url, { cache: "no-store"})
     return (await res.json()).produto
 
+}
+
+export async function getAllCategorias() {
+    const url = "http://localhost:5034/categoria"
+    const options = {
+        "method": "GET",
+    }
+    const res = await fetch(url, options)
+    return await res.json()
 }

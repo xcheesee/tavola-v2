@@ -5,6 +5,7 @@ import { dehydrate, Hydrate} from "@tanstack/react-query"
 
 export default async function Stock() {
   const queryClient = getQueryClient()
+  queryClient.invalidateQueries(['produtos'])
   await queryClient.prefetchQuery(['produtos'], getAllProdutos)
   const dehydratedState = dehydrate(queryClient)
 

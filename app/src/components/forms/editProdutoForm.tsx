@@ -1,21 +1,18 @@
 'use client'
 
-import { postProduto, putProduto } from "@/utils/api"
+import { putProduto } from "@/utils/api"
+import type { Categoria, Produto } from "@/utils/types"
 import { Icon } from "@iconify-icon/react/dist/iconify.js"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
-export default function ProdutoForm({ title="", produto={}, action }: { title: string, produto?: any, action: string }) {
+export default function EditProdutoForm({ title="", produto, categorias, action }: { title: string, produto: Produto, categorias: Array<Categoria>, action: string }) {
     const router = useRouter()
 
-    async function sendProduto({event, action}: {event: React.FormEvent<HTMLFormElement>, action: string}) {
+    async function sendProduto({event }: {event: React.FormEvent<HTMLFormElement>, action: string}) {
         const formData = new FormData(event.currentTarget)
         let res;
-        if (action === "add") {
-            res = await postProduto({formData: formData})
-        } else {
-            res = await putProduto({formData: formData, id: produto.id})
-        }
+        res = await putProduto({formData: formData, id: produto.id})
 
         if(res.ok) {
             router.push('/stock')
@@ -42,7 +39,7 @@ export default function ProdutoForm({ title="", produto={}, action }: { title: s
                     placeholder="Nome" 
                     className="input input-bordered w-full" 
                     name='nome'
-                    defaultValue={produto.nome ?? ""}
+                    defaultValue={produto.nome}
                 />
 
                 <input 
@@ -50,7 +47,7 @@ export default function ProdutoForm({ title="", produto={}, action }: { title: s
                     placeholder="Descricao" 
                     className="input input-bordered w-full" 
                     name='descricao'
-                    defaultValue={produto.descricao ?? ""}
+                    defaultValue={produto.descricao}
                 />
 
                 <div className="join w-full">
@@ -60,7 +57,7 @@ export default function ProdutoForm({ title="", produto={}, action }: { title: s
                         placeholder="Valor" 
                         className="input input-bordered join-item w-full" 
                         name="valor"
-                        defaultValue={produto.valor ?? ""}
+                        defaultValue={produto.valor}
                     />
                 </div>
 
@@ -70,7 +67,9 @@ export default function ProdutoForm({ title="", produto={}, action }: { title: s
                     name='categoria'
                 >
                     <option value="categoria" disabled hidden>Categoria</option>
-                    <option value="bebida">Bebidas</option>
+                    {categorias.map((categoria: Categoria, i: number) => (
+                       <option value={categoria.id} key={`cat${i}`}>{categoria.nome}</option> 
+                    ))}
                 </select>
                 <button className="btn btn-outline btn-success" formAction="submit">Adicionar</button>
             </div>
