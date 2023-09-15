@@ -1,13 +1,13 @@
 'use client'
 
-import { DeleteModal, AddCategoryModal } from '@/components/modals'
+import { AddCategoryModal } from '@/components/modals'
 import FiltroDropdown from '@/components/filtroDropdown'
 import ProdutoTable from '@/components/produtoTable'
-import { getAllProdutos, postProduto } from '@/utils/api'
+import { getAllProdutos } from '@/utils/api'
 import { Icon } from '@iconify-icon/react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Produtos() {
     const {data} = useQuery({
@@ -16,10 +16,9 @@ export default function Produtos() {
     })
 
     const categoryModalId = "category-modal"
-    const deleteModalId = "delete-modal"
-
 
     const [isCollapsed, setIsCollapsed] = useState(false)
+
     return (
         <>
             <div className="justify-self-start self-center flex gap-4"> 

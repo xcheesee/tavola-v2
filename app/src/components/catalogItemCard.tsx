@@ -1,3 +1,4 @@
+import { Produto } from '@/utils/types'
 import { Almendra } from 'next/font/google'
 
 export const almendra = Almendra({ 
@@ -6,7 +7,7 @@ export const almendra = Almendra({
     
 })
 
-export default function CatalogItemCard() {
+export default function CatalogItemCard({item}: {item: Produto}) {
     return(
         <div className="w-[380px] h-[300px] bg-neutral-500 border-4 border-black relative overflow-hidden">
             <div className='w-full h-full absolute'>
@@ -15,8 +16,11 @@ export default function CatalogItemCard() {
             <div className="absolute w-full h-full translate-y-3/4 hover:transform-none transition-all z-10">
                 <span className="absolute bg-black w-full h-full hover:opacity-90 transition-all bg"></span>
                 <div className="absolute grid w-full h-full grid-rows-[max-content_1fr] z-10 px-4">
-                    <h1 className={`pt-4 pb-8 ${almendra.className} text-3xl`}>O Guerreiro</h1>
-                    <p>Um hambúrguer poderoso e saboroso que irá satisfazer sua fome como um guerreiro de verdade! Este hambúrguer vem com um pão macio e uma carne bovina suculenta de 180g, com queijo cheddar derretido por cima. Além disso, tem rodelas de tomate, folhas de alface, cebola caramelizada e molho barbecue para um sabor marcante e robusto.</p>
+                    <div className='flex justify-between items-center py-4 [&>*]:text-neutral-300'>
+                        <h1 className={`${almendra.className} text-3xl`}>{item.nome}</h1>
+                        <div className='font-bold'>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(item.valor)}</div>
+                    </div>
+                    <p>{item.descricao}</p>
                 </div>
             </div>
         </div>
