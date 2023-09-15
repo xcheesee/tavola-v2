@@ -1,18 +1,23 @@
 import { useRouter } from "next/navigation"
 import { Icon } from "@iconify-icon/react"
 import type { Produto } from "@/utils/types"
+import { DeleteModal } from "../modals"
+import { useState } from "react"
 
 export default function ProdutoTable({
     produtos, 
-    setDelModalData
 }: {
     produtos: Array<Produto>,
-    setDelModalData: ({id}: {id: any}) => void 
 }) {
 
     const router = useRouter()
 
+
+    const [delModalData, setDelModalData] = useState<{id: string}>({id: ""})
+    const delModalId = "del-modal"
+
     return(
+      <>
 
         <div className="overflow-x-auto py-4 col-span-2">
             <table className="table bg-neutral-100 text-neutral-900">
@@ -49,7 +54,7 @@ export default function ProdutoTable({
                               setDelModalData({
                                 id: produto.id
                               })
-                              let modal = document?.getElementById('del-modal') as HTMLDialogElement
+                              let modal = document?.getElementById(delModalId) as HTMLDialogElement
                               modal.showModal()
                             }}
                           >
@@ -62,5 +67,8 @@ export default function ProdutoTable({
               </tbody>
             </table>
         </div> 
+
+        <DeleteModal data={delModalData} id={delModalId} />
+      </>
     )
 }

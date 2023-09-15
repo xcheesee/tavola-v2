@@ -3,16 +3,27 @@
 import { postProduto, putProduto } from "@/utils/api"
 import type { Categoria, Produto } from "@/utils/types"
 import { Icon } from "@iconify-icon/react/dist/iconify.js"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
 export default function NewProdutoForm({ title="", categorias }: { title: string, categorias: Array<Categoria> }) {
     const router = useRouter()
+    const queryClient = useQueryClient()
+
+    const postMutation = useMutation({
+        mutationFn: async (formData: FormData) => {
+            return await postProduto({formData: formData})
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(["produtos"])
+            return {ok: true}
+        }
+    })
 
     async function sendProduto({event}: {event: React.FormEvent<HTMLFormElement>}) {
         const formData = new FormData(event.currentTarget)
-        let res;
-        res = await postProduto({formData: formData})
+        const res = await postMutation.mutateAsync(formData)
 
         if(res.ok) {
             router.push('/stock')
@@ -39,7 +50,6 @@ export default function NewProdutoForm({ title="", categorias }: { title: string
                     placeholder="Nome" 
                     className="input input-bordered w-full" 
                     name='nome'
-                    //defaultValue={produto.nome ?? ""}
                 />
 
                 <input 
@@ -47,7 +57,6 @@ export default function NewProdutoForm({ title="", categorias }: { title: string
                     placeholder="Descricao" 
                     className="input input-bordered w-full" 
                     name='descricao'
-                    //defaultValue={produto.descricao ?? ""}
                 />
 
                 <div className="join w-full">
@@ -57,7 +66,6 @@ export default function NewProdutoForm({ title="", categorias }: { title: string
                         placeholder="Valor" 
                         className="input input-bordered join-item w-full" 
                         name="valor"
-                        //defaultValue={produto.valor ?? ""}
                     />
                 </div>
 
