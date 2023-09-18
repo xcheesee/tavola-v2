@@ -1,10 +1,14 @@
 'use client'
 
+import DynamicCounter from '@/components/dynamicCounter'
+import Header from '@/components/header'
 import StyledHero from '@/components/styledHero'
 import { HeroItem } from '@/utils/types'
+import { Icon } from '@iconify-icon/react/dist/iconify.js'
 import '@splidejs/react-splide/css'
 import { Eagle_Lake as Almendra } from 'next/font/google'
 import { useEffect, useState } from 'react'
+import { useRouter, redirect } from 'next/navigation'
 
 export const almendra = Almendra({ 
     subsets: ['latin'],
@@ -13,6 +17,11 @@ export const almendra = Almendra({
 
 export default function Home() {
     const [test, setTest] = useState(0)
+    const router = useRouter()
+
+    useEffect(() => {
+        redirect('/dashboard')
+    },[])
 
     const heroVals: HeroItem[] = [
         {
@@ -45,31 +54,52 @@ export default function Home() {
     }, [])
 
   return (
-    <div className="h-full">
-            <div className="w-full h-full grid">
-                <div className='h-[calc(100vh-5rem)]  relative overflow-x-hidden'>
-                    <div className='absolute w-full h-full'>
-                        <div className='absolute bg-black w-full h-full opacity-50'></div>
-                        <img src="/bg1.png" alt="" className='w-full h-full object-cover'/>
-                    </div>
-
-                    <div 
-                        className={`h-full w-full grid content-center transition-all duration-1000 `}
-                        style={{transform: `translateX(-${test * 100}%`}}
-                    >
-                        <div className='flex h-[600px] -translate-y-8 content-center'>
-                            {heroVals.map( ele => {
-                                return(
-                                    <div className='grid justify-center content-center w-screen flex-none content-center'>
-                                        <StyledHero {...ele} />
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </div>
-                        
-                </div>
+    <div className="min-h-screen relative">
+            <div className='absolute w-full h-full'>
+                <div className='absolute bg-black w-full h-full opacity-50'></div>
+                <img src="/mainbg.png" alt="" className='w-full h-full object-fit'/>
             </div>
+
+            <Header />
+
+            <div className='w-full h-[calc(100vh-3.5rem)] grid grid-rows-[max-content_1fr_min-content] pt-16'>
+                <div className='relative grid grid-rows-[repeat(2, min-content)] items-center pl-16 pb-28 pt-32'>
+                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-10'>TAVOLA</div>
+                    <div className='text-5xl text-center tracking-[2rem] text-gold-50 z-10'>REDONDA</div>
+                    <div className='absolute left-1/2 -translate-x-1/2 grid self-center content-center w-[300px]'>
+                        <img src="./laurel.svg" alt="" className=''/>
+                    </div>
+                </div>
+
+                <div className='row-start-2 z-10 flex justify-center pt-16 text-center'>
+                    <div className='font-serif text-3xl text-gold-50 tracking-widest leading-relaxed'>
+                        Onde o passado ganha vida em cada prato
+                    </div>
+                </div>
+
+                <div className='row-start-3 h-full z-10 grid grid-cols-3 justify-center content-start py-4'>
+                    <DynamicCounter 
+                        endValue={4823} 
+                        icon={<Icon icon={"material-symbols:stars-rounded"} width={50} className='text-gold-600'/>}
+                    >
+                        Reviews 5 estrelas
+                    </DynamicCounter >
+                    <DynamicCounter 
+                        endValue={339}
+                        icon={<Icon icon={"lucide:trophy"} width={50} className='text-gold-600 justify-self-center'/>}
+                    >
+                        Premios Recebidos
+                    </DynamicCounter>
+                    <DynamicCounter 
+                        endValue={72}
+                        icon={<Icon icon={"mdi:food"} width={50} className='text-gold-600 justify-self-center' />}
+                    >
+                        Menus Diferentes
+                    </DynamicCounter>
+                </div>
+
+            </div>
+
     </div>
   )
 }

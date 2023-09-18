@@ -61,6 +61,6 @@ export async function getAllCategorias() {
 export async function postCategoria({formData}: {formData: FormData}) {
     const url = "http://localhost:5034/categoria"
     const res = await fetch(url, { method: "POST", body: formData })
-    revalidateTag('categorias')
+    //revalidateTag('categorias')
     return {ok: true}
 }

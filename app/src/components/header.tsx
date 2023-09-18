@@ -3,44 +3,33 @@ import { Icon } from '@iconify-icon/react'
 
 export default function Header() {
     return(
-        <nav className="flex bg-neutral-800 justify-around relative w-full  z-10 ">
-            <div className="absolute w-full h-full backdrop-blur-3xl header-mask"></div>
-            <div className="flex flex-1 relative pt-4">
-
-            <div className="flex flex-1 justify-around z-20 [&>*]:text-neutral-100">
-                <div className="px-4 self-center h-[64px] h-[64px]">
-                    <img src="/tower-of-babel.png" alt="" className="w-full h-full"/>
-                </div>
-                <div className="flex flex-1 justify-around">
+        <nav className="flex justify-around relative w-full  z-10 ">
+            <div className="flex flex-1 relative pt-4 px-8">
+                <div className="flex flex-1 justify-around items-center z-20">
+                    <div className="text-gold-600 font-bold text-3xl font-light">Tavola Redonda</div>
                     <Link href={'/catalog'}>
-                        <div className="btn bg-yellow-950 text-white">Cardapio</div>
+                        <div className="text-white hover:text-gold-600 font-light">Cardapio</div>
                     </Link>
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950 text-white">Endereco</div>
+                        <div className="text-white hover:text-gold-600 font-light">Endereco</div>
                     </Link>
-                </div>
-            </div>
-            <div className="rounded-full border-4 border-yellow-950 overflow-hidden absolute top-1/6 right-1/2 translate-x-1/2 w-24 h-24 max-xl:hidden z-20">
-                <img src="/logo.jpeg" alt="" className="w-36 h-36 object-cover"/>
-            </div>
-            <div className="flex flex-1 justify-around z-20">
-                <div className="flex flex-1 justify-around">
+
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950 text-white">Contato</div>
+                        <div className="text-white hover:text-gold-600 font-light">Contato</div>
                     </Link>
                     <Link href={'/'}>
-                        <div className="btn bg-yellow-950 text-white">Sobre nos</div>
+                        <div className="text-white hover:text-gold-600 font-light">Sobre nos</div>
                     </Link>
+
                 </div>
-                <div className="flex gap-4 px-4">
-                    <button className="btn bg-yellow-950 text-white">
-                        <Icon icon="mdi:user" width={24}/>
-                    </button>
-                    <button className="btn bg-yellow-950 text-white">
-                        <Icon icon="mdi:cart" width={24}/>
-                    </button>
-                </div>
-            </div>
+                    <div className="flex flex-1 gap-4 px-4 justify-end">
+                        <button className="px-3 text-white flex items-center hover:text-gold-600">
+                            <Icon icon="mdi:user" width={40}/>
+                        </button>
+                        <button className="px-3 text-white flex items-center hover:text-gold-600">
+                            <Icon icon="mdi:cart" width={40}/>
+                        </button>
+                    </div>
             </div>
         </nav>
     )
